@@ -2,8 +2,9 @@ var rightAnswers = 0;
 var wrongAnswers = 0;
 var questionCount = 0;
 var startGame = false;
-var countdown = "";
-var timeLeft = ""; 
+var countdown;
+var timeLeft;
+
 
 /*Jquery get HTML variables */
 var qTimer = $('#qTimer');
@@ -33,7 +34,7 @@ var questions = [
        correctAnswer: 'c',
        correctResponse: 'YAY!',
        incorrectResponse: 'Opps',
-       timeUpResponse: 'Time\'s up! The correct answer is 1929. The first ceremony was held at the Hollywood Roosevelt Hotel.',
+       timeUpResponse: 'Time\'s up!',
        imgSrc: 'https://media3.giphy.com/media/26BkMnfPJE3ltfqWk/200.webp?cid=790b7611a8db4819a9fb6b087e4f3330c1d826ddce723453&rid=200.webp',
     },
     {
@@ -48,7 +49,7 @@ var questions = [
         correctAnswer: 'c',
         correctResponse: 'YAY!',
         incorrectResponse: 'Opps',
-        timeUpResponse: 'Time\'s up! The correct answer is 1929. The first ceremony was held at the Hollywood Roosevelt Hotel.',
+        timeUpResponse: 'Time\'s up!',
         imgSrc: 'https://media3.giphy.com/media/26BkMnfPJE3ltfqWk/200.webp?cid=790b7611a8db4819a9fb6b087e4f3330c1d826ddce723453&rid=200.webp',
      },
      {
@@ -63,7 +64,7 @@ var questions = [
         correctAnswer: 'c',
         correctResponse: 'YAY!',
         incorrectResponse: 'Opps',
-        timeUpResponse: 'Time\'s up! The correct answer is 1929. The first ceremony was held at the Hollywood Roosevelt Hotel.',
+        timeUpResponse: 'Time\'s up!',
         imgSrc: 'https://media3.giphy.com/media/26BkMnfPJE3ltfqWk/200.webp?cid=790b7611a8db4819a9fb6b087e4f3330c1d826ddce723453&rid=200.webp',
      },
 ]
@@ -80,6 +81,17 @@ var questions = [
    incorrect.detach();
    nextQuestionBtn.detach();
 
+ 
+   /* Function that runs the countdown called in nextQuestion() */
+   function quesCountdown() {
+    countdown--;
+    qTimer.text('Time left: ' + countdown);
+    if(countdown === 0) {
+        clearInterval(timeLeft);
+        clearQ() //replace with time's up function that has clearQ built in
+    }
+}
+
    /* Start Game */
 
    startResetBtn.click(function() {
@@ -91,8 +103,9 @@ var questions = [
    function nextQuestion() {
     if(questionCount < questions.length) {
         startGame = true;
-        countdown = 30;
-        timeLeft = setInterval(countdown, 1000); 
+        countdown = 5;
+        timeLeft = setInterval(quesCountdown, 1000); 
+        nextQuestionBtn.detach();
         startResetBtn.detach();
         answerImg.detach();
         correct.detach();
@@ -107,4 +120,30 @@ var questions = [
     }
 }
 
- 
+/* clear previous question */
+
+function clearQ() {
+    qTimer.detach();
+    qNumber.detach();
+    currentQuestion.detach();
+    answerA.detach();
+    answerB.detach();
+    answerC.detach();
+    answerD.detach();
+    correct.detach();
+    incorrect.detach();
+    nextQuestionBtn.appendTo('#qSection').html;
+    questionCount ++;
+}
+
+nextQuestionBtn.click(nextQuestion);
+
+
+/* times up function */
+
+/* wrong answer function */
+
+/* right answer function */
+
+/* end of game score */
+
