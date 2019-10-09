@@ -17,13 +17,14 @@ var answerD = $('#d');
 var answers = $('.answer');
 var answerImg = $('#answerImg');
 var correct = $('#correct');
+var timesUp = $('#timesUp');
 var incorrect = $('#incorrect');
 var startResetBtn = $('#startReset');
 var nextQuestionBtn = $('#nextQuestion');
 
 var questions = [
     {
-       questionNum: 1,
+       qNumber: 1,
        question: 'Test Question',
        answers: {
            a: 'test',
@@ -34,11 +35,11 @@ var questions = [
        correctAnswer: 'c',
        correctResponse: 'YAY!',
        incorrectResponse: 'Opps',
-       timeUpResponse: 'Time\'s up!',
-       imgSrc: 'https://media3.giphy.com/media/26BkMnfPJE3ltfqWk/200.webp?cid=790b7611a8db4819a9fb6b087e4f3330c1d826ddce723453&rid=200.webp',
+       timeUpResponse: '1Time\'s up!',
+       imgSrc: 'assets/images/pic.jpg',
     },
     {
-        questionNum: 2,
+        qNumber: 2,
         question: 'Test Question',
         answers: {
             a: 'test',
@@ -49,11 +50,11 @@ var questions = [
         correctAnswer: 'c',
         correctResponse: 'YAY!',
         incorrectResponse: 'Opps',
-        timeUpResponse: 'Time\'s up!',
+        timeUpResponse: '2Time\'s up!',
         imgSrc: 'https://media3.giphy.com/media/26BkMnfPJE3ltfqWk/200.webp?cid=790b7611a8db4819a9fb6b087e4f3330c1d826ddce723453&rid=200.webp',
      },
      {
-        questionNum: 3,
+        qNumber: 3,
         question: 'Test Question',
         answers: {
             a: 'test',
@@ -64,7 +65,7 @@ var questions = [
         correctAnswer: 'c',
         correctResponse: 'YAY!',
         incorrectResponse: 'Opps',
-        timeUpResponse: 'Time\'s up!',
+        timeUpResponse: '3Time\'s up!',
         imgSrc: 'https://media3.giphy.com/media/26BkMnfPJE3ltfqWk/200.webp?cid=790b7611a8db4819a9fb6b087e4f3330c1d826ddce723453&rid=200.webp',
      },
 ]
@@ -88,14 +89,20 @@ var questions = [
     qTimer.text('Time left: ' + countdown);
     if(countdown === 0) {
         clearInterval(timeLeft);
-        clearQ() //replace with time's up function that has clearQ built in
+        timesUpDisplay() //replace with time's up function that has clearQ built in
     }
 }
 
-   /* Start Game */
+   /* Start and Reset Game */
 
    startResetBtn.click(function() {
-    if(!startGame) {
+    if(startGame === true) {
+        rightAnswers = 0;
+        wrongAnswers = 0;
+        questionCount = 0;
+        nextQuestion();
+    }
+    else {
         nextQuestion();
     }
     });
@@ -110,13 +117,14 @@ var questions = [
         answerImg.detach();
         correct.detach();
         incorrect.detach();
+        timesUp.detach();
         qTimer.appendTo('#qSection').text('Time left: ' + countdown);
-        qNumber.appendTo('#qSection').text('Question #' + questions[questionCount].questionNum);
-        currentQuestion.appendTo('#qSection').html(questions[questionCount].question);
-        answerA.appendTo('#qSection').html(questions[questionCount].answers.a);
-        answerB.appendTo('#qSection').html(questions[questionCount].answers.b);
-        answerC.appendTo('#qSection').html(questions[questionCount].answers.c);
-        answerD.appendTo('#qSection').html(questions[questionCount].answers.d);
+        qNumber.appendTo('#qSection').text('Question #' + questions[questionCount].qNumber);
+        currentQuestion.appendTo('#qSection').text(questions[questionCount].question);
+        answerA.appendTo('#qSection').text(questions[questionCount].answers.a);
+        answerB.appendTo('#qSection').text(questions[questionCount].answers.b);
+        answerC.appendTo('#qSection').text(questions[questionCount].answers.c);
+        answerD.appendTo('#qSection').text(questions[questionCount].answers.d);
     }
 }
 
@@ -125,25 +133,58 @@ var questions = [
 function clearQ() {
     qTimer.detach();
     qNumber.detach();
-    currentQuestion.detach();
     answerA.detach();
     answerB.detach();
     answerC.detach();
     answerD.detach();
     correct.detach();
     incorrect.detach();
-    nextQuestionBtn.appendTo('#qSection').html;
-    questionCount ++;
+    answerImg.appendTo('#qSection').attr('src', questions[questionCount].imgSrc);
+    nextQuestionBtn.appendTo('#qSection').text;
+    // answerImg.appendTo('#answerImage').html;
+
 }
+
+/* user clicks */
 
 nextQuestionBtn.click(nextQuestion);
 
+// answers.click(function() {
+    
+//     if(questions[questionCount].correctAnswer) {
+//         rightAnswersDisplay();
+//     } else {
+//         wrongAnswerDisplay();
+//     };
+// });
+
+
+
 
 /* times up function */
-
+function timesUpDisplay () {
+    clearQ();
+    currentQuestion.html(questions[questionCount].timeUpResponse);
+    wrongAnswers ++;
+    questionCount ++;
+}
 /* wrong answer function */
 
+function wrongAnswerDisplay () {
+    clearQ();
+    currentQuestion.html(questions[questionCount].incorrectResponse);
+    wrongAnswers ++;
+    questionCount ++;
+}
+
 /* right answer function */
+
+function rightAnswerDisplay () {
+    clearQ();
+    currentQuestion.html(questions[questionCount].correctResponse);
+    wrongAnswers ++;
+    questionCount ++;
+}
 
 /* end of game score */
 
