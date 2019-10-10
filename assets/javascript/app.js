@@ -1,206 +1,209 @@
-var rightAnswers = 0;
-var wrongAnswers = 0;
-var questionCount = 0;
-var startGame = false;
-var countdown;
-var timeLeft;
+// get HTML elements
+var start = document.getElementById("start");
+var quiz = document.getElementById("quiz");
+var question = document.getElementById("question");
 
+var choiceA = document.getElementById("a");
+var choiceB = document.getElementById("b");
+var choiceC = document.getElementById("c");
+var choiceD = document.getElementById("d");
+var counter = document.getElementById("counter");
+var timeBar = document.getElementById("timeBar");
+var progress = document.getElementById("progress");
+var scoreDiv = document.getElementById("scoreContainer");
 
-/*Jquery get HTML element variables */
-var qTimer = $('#qTimer');
-var qNumber = $('#qNumber');
-var currentQuestion = $('#question');
-var answerA = $('#a');
-var answerB = $('#b');
-var answerC = $('#c');
-var answerD = $('#d');
-var answers = $('.answer');
-var answerImg = $('#answerImg');
-var correct = $('#correct');
-var timesUp = $('#timesUp');
-var incorrect = $('#incorrect');
-var startResetBtn = $('#startReset');
-var nextQuestionBtn = $('#nextQuestion');
-
+// create vars and questions
 var questions = [
     {
-       qNumber: 1,
-       question: 'Test Question',
-       answers: {
-           a: 'test',
-           b: 'test',
-           c: 'test',
-           d: 'test'
-       },
-       correctAnswer: 'a',
-       correctResponse: 'YAY!',
-       incorrectResponse: 'Opps',
-       timeUpResponse: '1Time\'s up!',
-       imgSrc: 'assets/images/pic.jpg',
+        question : "Are you smart?",
+        imgSrc : "img/html.png",
+        choiceA : "Correct",
+        choiceB : "Wrong",
+        choiceC : "Wrong",
+        choiceD : "Wrong",
+        correct : "a",
+        correctResponce: "Yay q1!",
+        incorrectResponce: "Nope q1!",
+        timesUpResponce: "Time's Up q1!",
+    },{
+        question : "Are you smart?",
+        imgSrc : "img/css.png",
+        choiceA : "Wrong",
+        choiceB : "Correct",
+        choiceC : "Wrong",
+        choiceD : "Wrong",
+        correct : "b",
+        correctResponce: "Yay q2!",
+        incorrectResponce: "Nope q2!",
+        timesUpResponce: "Time's Up q2!",
+    },{
+        question : "Are you smart?",
+        imgSrc : "img/js.png",
+        choiceA : "Wrong",
+        choiceB : "Wrong",
+        choiceC : "Correct",
+        choiceD : "Wrong",
+        correct : "c",
+        correctResponce: "Yay! q1",
+        incorrectResponce: "Nope! q2",
+        timesUpResponce: "Time's Up! q3",
+
     },
     {
-        qNumber: 2,
-        question: 'Test Question',
-        answers: {
-            a: 'test',
-            b: 'test',
-            c: 'test',
-            d: 'test'
-        },
-        correctAnswer: 'c',
-        correctResponse: 'YAY!',
-        incorrectResponse: 'Opps',
-        timeUpResponse: '2Time\'s up!',
-        imgSrc: 'https://media3.giphy.com/media/26BkMnfPJE3ltfqWk/200.webp?cid=790b7611a8db4819a9fb6b087e4f3330c1d826ddce723453&rid=200.webp',
-     },
-     {
-        qNumber: 3,
-        question: 'Test Question',
-        answers: {
-            a: 'test',
-            b: 'test',
-            c: 'test',
-            d: 'test'
-        },
-        correctAnswer: 'a',
-        correctResponse: 'YAY!',
-        incorrectResponse: 'Opps',
-        timeUpResponse: '3Time\'s up!',
-        imgSrc: 'https://media3.giphy.com/media/26BkMnfPJE3ltfqWk/200.webp?cid=790b7611a8db4819a9fb6b087e4f3330c1d826ddce723453&rid=200.webp',
-     },
-]
+        question : "Are you smart?",
+        imgSrc : "img/js.png",
+        choiceA : "Wrong",
+        choiceB : "Wrong",
+        choiceC : "Correct",
+        choiceD : "Wrong",
+        correct : "c",
+        correctResponce: "Yay!",
+        incorrectResponce: "Nope!",
+        timesUpResponce: "Time's Up!",
+    },
+    {
+        question : "Are you smart?",
+        imgSrc : "img/js.png",
+        choiceA : "Wrong",
+        choiceB : "Wrong",
+        choiceC : "Correct",
+        choiceD : "Wrong",
+        correct : "c",
+        correctResponce: "Yay!",
+        incorrectResponce: "Nope!",
+        timesUpResponce: "Time's Up!"
+    },
+];
 
-   /* Initial Elements */
-   qTimer.detach();
-   qNumber.detach();
-   currentQuestion.text('We are about to see if you are smarter than a fifth grader!');
-   answerA.detach();
-   answerB.detach();
-   answerC.detach();
-   answerD.detach();
-   correct.detach();
-   incorrect.detach();
-   nextQuestionBtn.detach();
+var lastQuestion = questions.length - 1;
+var currentQuestion = 0;
+var count = 0;
+var questionTime = 5; 
+var BarWidth = 200; // 150px
+var BarUnit = BarWidth / questionTime;
+var TIMER;
+var score = 0;
 
- 
-   /* Function that runs the countdown called in nextQuestion() */
-   function quesCountdown() {
-    countdown--;
-    qTimer.text('Time left: ' + countdown);
-    if(countdown === 0) {
-        clearInterval(timeLeft);
-        timesUpDisplay() //replace with time's up function that has clearQ built in
+// next question
+function nextQuestion(){
+    var q = questions[currentQuestion];
+    
+    question.innerHTML = "<p>"+ q.question +"</p>";
+    
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+    choiceD.innerHTML = q.choiceD;
+}
+
+start.addEventListener("click",startQuiz);
+
+// start quiz
+function startQuiz(){
+    start.style.display = "none";
+    nextQuestion();
+    quiz.style.display = "block";
+    renderProgress();
+    renderCounter();
+    TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
+}
+
+// render progress
+function renderProgress(){
+    for(var qIndex = 0; qIndex <= lastQuestion; qIndex++){
+        progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
     }
 }
 
+// counter render
 
-   /* Start and Reset Game */
+function renderCounter(){
+    if(count <= questionTime){
+        counter.innerHTML = count;
+        timeBar.style.width = count * BarUnit + "px";
+        count++
+    }else{
+        count = 0;
+        // change progress color to red
+        answerIsWrong();
+        alert(questions[currentQuestion].timesUpResponce);
+        if(currentQuestion < lastQuestion){
+            currentQuestion++;
+            nextQuestion();
+        }else{
+            // end the quiz and show the score
+            clearInterval(TIMER);
+            scoreRender();
+            alert(test);
+        }
+    }
+}
 
-   startResetBtn.click(function() {
-    if(startGame === true) {
-        rightAnswers = 0;
-        wrongAnswers = 0;
-        questionCount = 0;
+// checkAnwer
+
+function checkAnswer(answer){
+    if( answer == questions[currentQuestion].correct){
+        // answer is correct
+        score++;
+        // change progress color to green
+        answerIsCorrect();
+        alert(questions[currentQuestion].correctResponce);
+    }else if ( answer != questions[currentQuestion].correct){
+        // answer is wrong
+        // change progress color to red
+        answerIsWrong();
+        alert(questions[currentQuestion].incorrectResponce);
+        }
+    count = 0;
+    if(currentQuestion < lastQuestion){
+        currentQuestion++;
         nextQuestion();
-    }
-    else {
-        nextQuestion();
-    }
-    });
-
-   function nextQuestion() {
-    if(questionCount < questions.length) {
-        startGame = true;
-        countdown = 5;
-        timeLeft = setInterval(quesCountdown, 1000); 
-        nextQuestionBtn.detach();
-        startResetBtn.detach();
-        answerImg.detach();
-        correct.detach();
-        incorrect.detach();
-        timesUp.detach();
-        qTimer.appendTo('#qSection').text('Time left: ' + countdown);
-        qNumber.appendTo('#qSection').text('Question #' + questions[questionCount].qNumber);
-        currentQuestion.appendTo('#qSection').text(questions[questionCount].question);
-        answerA.appendTo('#qSection').text(questions[questionCount].answers.a);
-        answerB.appendTo('#qSection').text(questions[questionCount].answers.b);
-        answerC.appendTo('#qSection').text(questions[questionCount].answers.c);
-        answerD.appendTo('#qSection').text(questions[questionCount].answers.d);
+    }else{
+        // end the quiz and show the score
+        clearInterval(TIMER);
+        scoreRender();
     }
 }
 
-/* clear previous question */
-
-function clearQ() {
-    qTimer.detach();
-    qNumber.detach();
-    answerA.detach();
-    answerB.detach();
-    answerC.detach();
-    answerD.detach();
-    correct.detach();
-    incorrect.detach();
-    answerImg.appendTo('#qSection').attr('src', questions[questionCount].imgSrc);
-    nextQuestionBtn.appendTo('#qSection').text;
-    // answerImg.appendTo('#answerImage').html;
-
+// answer is correct
+function answerIsCorrect(){
+    document.getElementById(currentQuestion).style.backgroundColor = "#0f0";
 }
 
-/*next question click */
+// answer is Wrong
+function answerIsWrong(){
+    document.getElementById(currentQuestion).style.backgroundColor = "#f00";
+}
 
-nextQuestionBtn.click(nextQuestion);
+function TimeIsUp(){
+    document.getElementById(currentQuestion).style.backgroundColor = "#f00";
+    alert("test");
+}
 
-/*answer  click */
-answers.click(function() {
-    var i = 0;
-    console.log(answers[i].id)
-    var clickedA = answers[i].id;
-    if (clickedA === questions[questionCount].correctAnswer){
-        clearQ();
-        clearInterval(timeLeft)
-        rightAnswerDisplay();
+// score render
+function scoreRender(){
+    scoreDiv.style.display = "block";
+    quiz.style.display = "none";
+    
+    // calculate the amount of question percent answered by the user
+    var scorePerCent = Math.round(100 * score/questions.length);
+    
+    // choose the image based on the scorePerCent
+    var finalScore = ""
+
+    if(scorePerCent >= 80) {
+        finalScore="Congrats! You're Smarter Than a Fifth Grader!"
     }
-    else if 
-    (clickedA === questions[questionCount].incorrectAnswer){
-        clearQ();
-        clearInterval(timeLeft)
-        wrongAnswerDisplay();
+    else if(scorePerCent >= 60) {
+        finalScore="Cheer Up! There May Be a Couple Fifth Graders You're Smarter Than."
     }
-
-});
-
-//     if (select === correctAnswer)
-//     rightAnswerDisplay()
-//     else if
-// });
-
-
-
-
-/* times up function */
-function timesUpDisplay () {
-    clearQ();
-    currentQuestion.html(questions[questionCount].timeUpResponse);
-    wrongAnswers ++;
-    questionCount ++;
+    else if(scorePerCent >= 40) {
+        finalScore="Yikes! You're Not Smarter Than a Fifth Grader."
+    }
+    else if(scorePerCent >= 20)
+        finalScore="Uh Oh! A Fifth Grader is Definately Smarter Than You. Maybe It's Time To Go Back to School."
+    
+    
+    scoreDiv.innerHTML += "<p>"+ scorePerCent +"% " + finalScore + "</p>";
 }
-/* wrong answer function */
-
-function wrongAnswerDisplay () {
-    clearQ();
-    currentQuestion.html(questions[questionCount].incorrectResponse);
-    wrongAnswers ++;
-    questionCount ++;
-}
-
-/* right answer function */
-
-function rightAnswerDisplay () {
-    clearQ();
-    currentQuestion.html(questions[questionCount].correctResponse);
-    wrongAnswers ++;
-    questionCount ++;
-}
-
-/* end of game score */
-
+console.log(finalScore)

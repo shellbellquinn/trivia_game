@@ -1,40 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Are You Smarter Than A Fifth Grader?</title>
-		<link rel="stylesheet" href="assets/css/reset.css" />
-	</head>
-	<body>
-		<div id="mainContainer">
-			<header id="headerRow">
-					<h1 class="mainHead">Are You Smarter Than A Fifth Grader?</h1>
-			</header>
-			<main id="middleRow">
-				<div id="rowContainer">
-					<section id="qSection">
-						<h3 id="qTimer"></h3>
-						<h2 id="qNumber"></h2>
-						<h3 id="question"></h3>
-						<p class="answer" id="a"></p>
-						<p class="answer" id="b"></p>
-						<p class="answer" id="c"></p>
-						<p class="answer" id="d"></p>
-						<h3 id="correct"></h3>
-						<h3 id="incorrect"></h3>
-						<h3 id="timesUp"></h3>
-						<img id="answerImg"/>
-                        <button id="startReset">Start</button>
-					</section>
-				
-						
-						<button id="nextQuestion">Next Question</button>
-					</section>
-				</div>
-			</main>
-		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="assets/javascript/app.js"></script>
-	</body>
+<head>
+    <meta charset="UTF-8">
+	<title>Quiz</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+	<div id=body></div>
+	<h1 id=header>Are You Smarter Than A Fifth Grader?</h1>
+    <div id="container">
+        <div id="start">Start Quiz!</div>
+        <div id="quiz" style="display: none">
+            <div id="question"></div>
+            
+            <div id="choices">
+                <div class="choice" id="a" onclick="checkAnswer('a')"></div>
+                <div class="choice" id="b" onclick="checkAnswer('b')"></div>
+				<div class="choice" id="c" onclick="checkAnswer('c')"></div>
+				<div class='choice' id='d' onclick="checkAnswer('d')"></div>
+            </div>
+            <div id="timer">
+                <div id="counter"></div>
+                <div id="btimeBar"></div>
+                <div id="timeBar"></div>
+            </div>
+            <div id="progress"></div>
+        </div>
+        <div id="scoreContainer" style="display: none"></div>
+    </div>
+    <script src="assets/javascript/app.js"></script>
+</body>
 </html>
