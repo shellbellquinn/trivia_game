@@ -6,7 +6,7 @@ var countdown;
 var timeLeft;
 
 
-/*Jquery get HTML variables */
+/*Jquery get HTML element variables */
 var qTimer = $('#qTimer');
 var qNumber = $('#qNumber');
 var currentQuestion = $('#question');
@@ -32,7 +32,7 @@ var questions = [
            c: 'test',
            d: 'test'
        },
-       correctAnswer: 'c',
+       correctAnswer: 'a',
        correctResponse: 'YAY!',
        incorrectResponse: 'Opps',
        timeUpResponse: '1Time\'s up!',
@@ -62,7 +62,7 @@ var questions = [
             c: 'test',
             d: 'test'
         },
-        correctAnswer: 'c',
+        correctAnswer: 'a',
         correctResponse: 'YAY!',
         incorrectResponse: 'Opps',
         timeUpResponse: '3Time\'s up!',
@@ -92,6 +92,7 @@ var questions = [
         timesUpDisplay() //replace with time's up function that has clearQ built in
     }
 }
+
 
    /* Start and Reset Game */
 
@@ -145,17 +146,32 @@ function clearQ() {
 
 }
 
-/* user clicks */
+/*next question click */
 
 nextQuestionBtn.click(nextQuestion);
 
-// answers.click(function() {
-    
-//     if(questions[questionCount].correctAnswer) {
-//         rightAnswersDisplay();
-//     } else {
-//         wrongAnswerDisplay();
-//     };
+/*answer  click */
+answers.click(function() {
+    var i = 0;
+    console.log(answers[i].id)
+    var clickedA = answers[i].id;
+    if (clickedA === questions[questionCount].correctAnswer){
+        clearQ();
+        clearInterval(timeLeft)
+        rightAnswerDisplay();
+    }
+    else if 
+    (clickedA === questions[questionCount].incorrectAnswer){
+        clearQ();
+        clearInterval(timeLeft)
+        wrongAnswerDisplay();
+    }
+
+});
+
+//     if (select === correctAnswer)
+//     rightAnswerDisplay()
+//     else if
 // });
 
 
