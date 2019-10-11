@@ -10,6 +10,7 @@ body{
     font-weight: bold;
     color:white;
     font-family: 'Gochi Hand', cursive;
+    padding-bottom: 10px;
 }
 #subheader{
     margin: 30px;
@@ -53,7 +54,8 @@ body{
     width: 15em;
     float: left;
     padding: 50px;
-    padding-top:0
+    padding-top:0;
+    margin-top: -10px;
 }
 
 #question{
@@ -71,9 +73,10 @@ body{
 
 #choices{
     padding: 5px;
-    padding-top: 8em;
+    padding-top: 7em;
     justify-content: center;
-    font-size: 1.25em
+    font-size: 1.25em;
+    display: block;
 }
 .choice{
     display: block;
@@ -117,31 +120,29 @@ body{
   }
 
 #scoreContainer{
-    margin : 20px auto;
-    opacity: 0.8;
-    height: 300px;
-    width : 700px;
-    border-radius: 5px;
-    position: relative;
-    display: none;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 700px;
 }
 
 #scoreContainer p{
-    margin: 100px;
-    padding-top: 20px;
+    margin: 20px;
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
+#imgContainer {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+@media only screen and (max-width: 700px) {
     #questionImg{
         width: 100%;
-        padding: 50px;
+        padding-left: -20px;
+        padding: 20px;
         padding-top:0
     }
 
