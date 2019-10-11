@@ -13,7 +13,7 @@ body{
 }
 #subheader{
     margin: 30px;
-    font-size: 20px;
+    font-size: 1.5em;
     text-align: center;
     font-weight: lighter;
 }
@@ -34,7 +34,7 @@ body{
 }
 
 #start{
-    font-size: 1.5em;
+    font-size: 3em;
     font-weight: bold;
     border: 2px solid green;
     text-align: center;
@@ -95,15 +95,16 @@ body{
 
 #progress {
     width: 100%;
-    background-color: tan;
+    background-color: rgb(112, 62, 29);
     margin: 30px;
+    height: 30px;
   }
   
   #timeBar {
-    width: 1%;
+    width: 0%;
     height: 30px;
     background-color: green;
-    margin: 30px;
+    
   }
 
 #scoreContainer{

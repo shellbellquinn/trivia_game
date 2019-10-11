@@ -106,7 +106,6 @@ function startQuiz(){
     quiz.style.display = "block";
     // renderProgress();
     renderCounter();
-    renderNextQuestion();
     TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
 }
 
