@@ -12,13 +12,13 @@ var timeBar = document.getElementById("timeBar");
 var progress = document.getElementById("progress");
 var scoreDiv = document.getElementById("scoreContainer");
 var img1 = document.getElementById("img1");
-var imgSrc = document.getElementById("imgSrc");
+var questionImg = document.getElementById("questionImg");
 
 // create vars and questions
 var questions = [
     {
         question : "If the Teenage Mutant Ninja Turtles were real turtles, which would be their animal classifiaction?",
-        pic : "http://pngimg.com/uploads/ninja_turtles/ninja_turtles_PNG55.png",
+        questionImg: "http://pngimg.com/uploads/ninja_turtles/ninja_turtles_PNG55.png",
         choiceA : "Reptiles",
         choiceB : "Marsupials",
         choiceC : "Amphibians",
@@ -29,7 +29,7 @@ var questions = [
         timesUpResponce: "Time's Up! The correct answer was reptile!",
     },{
         question : "It takes Nick 75 minutes to do his homework. If he begins at 7pm, how much time will he have to practice his dance moves before bed at 10pm?",
-        pic : "img/css.png",
+        questionImg: "img/css.png",
         choiceA : "1 hour and 20 minutes",
         choiceB : "1 hour and 15 minutes",
         choiceC : "1 hour and 45 minutes",
@@ -40,7 +40,7 @@ var questions = [
         timesUpResponce: "Uh oh! Time's up the correct answer was 1 hour and 45 minutes!",
     },{
         question : "What hemisphere is Australia located in?",
-        pic : "img/js.png",
+        questionImg: "img/js.png",
         choiceA : "Northern",
         choiceB : "Southern",
         choiceC : "Both",
@@ -53,7 +53,7 @@ var questions = [
     },
     {
         question : "'My very empty mouth swallowed up nachos?' is a mnemonic device that helps us remember the name of which of these things?",
-        pic : "img/js.png",
+        questionImg: "img/js.png",
         choiceA : "Moon Phases",
         choiceB : "Stars in Orion",
         choiceC : "Planets in Our Solar System",
@@ -65,7 +65,7 @@ var questions = [
     },
     {
         question : "If a peach pit is one-sixth the weight of a peach and you have 24 pounds of peaches, how many pounds are the pits?",
-        pic : "img/js.png",
+        questionImg: "img/js.png",
         choiceA : "6 pounds",
         choiceB : "4 pounds",
         choiceC : "8 pounds",
@@ -88,13 +88,14 @@ var score = 0;
 
 // next question
 function nextQuestion(){
+    
     var q = questions[currentQuestion];
     question.innerHTML = "<p>"+ q.question +"</p>";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
     choiceD.innerHTML = q.choiceD;
-    imgSrc.innerHTML = q.pic;
+    questionImg.setAttribute ("src", q.questionImg);
 }
 
 start.addEventListener("click",startQuiz);

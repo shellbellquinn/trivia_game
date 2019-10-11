@@ -5,9 +5,9 @@ body{
 }
 #header{
     margin: 30px;
-    font-size: 5em;
+    font-size: 3em;
     text-align: center;
-    font-weight: bolder;
+    font-weight: bold;
     color:white;
     font-family: 'Gochi Hand', cursive;
 }
@@ -16,12 +16,12 @@ body{
     font-size: 1.5em;
     text-align: center;
     font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #container{
-    margin : 20px auto;
-    max-width : 700px;
-    position: relative;
+    margin: 0 auto;
+    max-width: 700px;
 }
 
 #img1{
@@ -29,7 +29,6 @@ body{
     display: flex;
     justify-content: center;
     margin-bottom: 5px;
-    font-family: 'Gochi Hand', cursive;
     padding: 20px;
 }
 
@@ -50,38 +49,47 @@ body{
     border: 3px solid lightgreen;
     color : lightgreen;
 }
+#questionImg{
+    width: 15em;
+    float: left;
+    padding: 50px;
+    padding-top:0
+}
 
 #question{
-    width:500px;
     margin: 10px;
     right:0;
     top:0;
 }
 #question p{
     margin : 0;
-    padding : 30px;
+    padding : 0px;
     font-size: 1.25em;
+    font-family: Arial, Helvetica, sans-serif;
+    
 }
 
 #choices{
-    right : 0;
-    top : 125px;
-    padding : 30px
+    padding: 5px;
+    padding-top: 8em;
+    justify-content: center;
+    font-size: 1.25em
 }
 .choice{
-    display: flex;
-    width : 30em;
+    display: block;
     text-align: center;
     border : 1px solid grey;
     border-radius: 5px;
     cursor: pointer;
     padding : 5px;
     justify-content: center;
-    margin: 30px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    font-size: 1.25em
 }
 
 #counter{
-    font-size: 2em;
+    font-size: 1.7em;
     text-align: center;
     color: white;
     position: absolute; 
@@ -97,6 +105,7 @@ body{
     width: 100%;
     background-color: rgb(112, 62, 29);
     margin: 30px;
+    margin-left: -5px;
     height: 30px;
   }
   
@@ -117,6 +126,7 @@ body{
     display: none;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 #scoreContainer p{
@@ -126,3 +136,24 @@ body{
     font-weight: bold;
     text-align: center;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #questionImg{
+        width: 100%;
+        padding: 50px;
+        padding-top:0
+    }
+
+    #img1{
+        width: 100%;
+        margin: 0;
+    }
+
+    #choices{
+        padding: 5px;
+        padding-top: 10px;
+        justify-content: center;
+        font-size: 1.25em
+    }
+    }

@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<title>Quiz</title>
+    <title>Quiz</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
 	<link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Lato&display=swap" rel="stylesheet">
@@ -16,21 +17,24 @@
         <button id="start">Start Quiz!</button>
         <img id=img1 src="https://i.ytimg.com/vi/W1qxEoeZImc/hqdefault.jpg"/>
         <div id="quiz" style="display: none">
+            
+            <img id='questionImg'/>  
             <div id="question"></div> 
                      
             <div id="choices">
-                    <img id='imgSrc'/>  
                 <div class="choice" id="a" onclick="checkAnswer('a')"></div>
                 <div class="choice" id="b" onclick="checkAnswer('b')"></div>
 				<div class="choice" id="c" onclick="checkAnswer('c')"></div>
                 <div class='choice' id='d' onclick="checkAnswer('d')"></div>
+
+                <div id="timer">
+                        <p id="counter"></p>
+                        <div id="progress">
+                                <div id="timeBar"><p id="counter"></p></div>
+                              </div>
                 
             </div>
-            <div id="timer">
-				<p id="counter"></p>
-				<div id="progress">
-						<div id="timeBar"><p id="counter"></p></div>
-					  </div>
+          
             </div>
         </div>
         <div id="scoreContainer" style="display: none"></div>
