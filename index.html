@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
 	<title>Quiz</title>
 	<link rel="stylesheet" href="assets/css/reset.css">
-	<link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Lato&display=swap" rel="stylesheet">
 </head>
 <body>
 	<div id=body></div>
 	<h1 id=header>Are You Smarter Than A Fifth Grader?</h1>
     <div id="container">
-			<h1 id=subheader>Take This Quiz to Find Out if You're Smarter Than A Fifth Grader! Based off the TV show, let's test your knowledge against the avarage fifth grader. You have 30 seconds per question. Good luck!</h1>
-        <button id="start">Start Quiz!</button>
-        <div id="quiz" style="display: none">
-            <div id="question"></div>
+            <h1 id=subheader>Take This Quiz to Find Out if You're Smarter Than A Fifth Grader! Based off the TV show, let's test your knowledge against the avarage fifth grader. You have 30 seconds per question. Good luck!</h1>
             
+        <button id="start">Start Quiz!</button>
+        <img id=img1 src="https://i.ytimg.com/vi/W1qxEoeZImc/hqdefault.jpg"/>
+        <div id="quiz" style="display: none">
+            <div id="question"></div>            
             <div id="choices">
                 <div class="choice" id="a" onclick="checkAnswer('a')"></div>
                 <div class="choice" id="b" onclick="checkAnswer('b')"></div>
@@ -29,6 +31,8 @@
             </div>
         </div>
         <div id="scoreContainer" style="display: none"></div>
+        <img id="imgContainer" , style="display: none"/>
+
     </div>
     <script src="assets/javascript/app.js"></script>
 </body>

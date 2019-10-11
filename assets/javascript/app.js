@@ -11,6 +11,7 @@ var counter = document.getElementById("counter");
 var timeBar = document.getElementById("timeBar");
 var progress = document.getElementById("progress");
 var scoreDiv = document.getElementById("scoreContainer");
+var img1 = document.getElementById("img1");
 
 // create vars and questions
 var questions = [
@@ -100,6 +101,7 @@ start.addEventListener("click",startQuiz);
 function startQuiz(){
     start.style.display = "none";
     subheader.style.display = "none";
+    img1.style.display ="none";
     nextQuestion();
     quiz.style.display = "block";
     // renderProgress();
