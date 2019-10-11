@@ -2,7 +2,7 @@
 var start = document.getElementById("start");
 var quiz = document.getElementById("quiz");
 var question = document.getElementById("question");
-
+var subheader = document.getElementById("subheader");
 var choiceA = document.getElementById("a");
 var choiceB = document.getElementById("b");
 var choiceC = document.getElementById("c");
@@ -44,8 +44,8 @@ var questions = [
         choiceC : "Correct",
         choiceD : "Wrong",
         correct : "c",
-        correctResponce: "Yay! q1",
-        incorrectResponce: "Nope! q2",
+        correctResponce: "Yay! q3",
+        incorrectResponce: "Nope! q3",
         timesUpResponce: "Time's Up! q3",
 
     },
@@ -78,18 +78,16 @@ var questions = [
 var lastQuestion = questions.length - 1;
 var currentQuestion = 0;
 var count = 0;
-var questionTime = 5; 
-var BarWidth = 200; // 150px
-var BarUnit = BarWidth / questionTime;
+var questionTime = 50; 
+var barWidth = 700; 
+var barUnit = barWidth / questionTime;
 var TIMER;
 var score = 0;
 
 // next question
 function nextQuestion(){
     var q = questions[currentQuestion];
-    
     question.innerHTML = "<p>"+ q.question +"</p>";
-    
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
@@ -101,32 +99,38 @@ start.addEventListener("click",startQuiz);
 // start quiz
 function startQuiz(){
     start.style.display = "none";
+    subheader.style.display = "none";
     nextQuestion();
     quiz.style.display = "block";
-    renderProgress();
+    // renderProgress();
     renderCounter();
+    renderNextQuestion();
     TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
 }
 
-// render progress
-function renderProgress(){
-    for(var qIndex = 0; qIndex <= lastQuestion; qIndex++){
-        progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
-    }
-}
+// // render progress
+// function renderProgress(){
+//     move();
+//     for(var qIndex = 0; qIndex <= lastQuestion; qIndex++){
+//         progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
+//     }
+// }
 
 // counter render
 
 function renderCounter(){
     if(count <= questionTime){
+        timeBar.style.width = count * barUnit + "px";
         counter.innerHTML = count;
-        timeBar.style.width = count * BarUnit + "px";
         count++
     }else{
         count = 0;
         // change progress color to red
-        answerIsWrong();
         alert(questions[currentQuestion].timesUpResponce);
+    }
+}
+
+ function renderNextQuestion(){
         if(currentQuestion < lastQuestion){
             currentQuestion++;
             nextQuestion();
@@ -135,9 +139,13 @@ function renderCounter(){
             clearInterval(TIMER);
             scoreRender();
             alert(test);
+            count = 0;
+            alert(questions[currentQuestion].timesUpResponce);
         }
     }
-}
+
+
+
 
 // checkAnwer
 
@@ -145,13 +153,9 @@ function checkAnswer(answer){
     if( answer == questions[currentQuestion].correct){
         // answer is correct
         score++;
-        // change progress color to green
-        answerIsCorrect();
         alert(questions[currentQuestion].correctResponce);
     }else if ( answer != questions[currentQuestion].correct){
-        // answer is wrong
-        // change progress color to red
-        answerIsWrong();
+        // answer is wrong 
         alert(questions[currentQuestion].incorrectResponce);
         }
     count = 0;
@@ -163,17 +167,11 @@ function checkAnswer(answer){
         clearInterval(TIMER);
         scoreRender();
     }
+    
 }
 
 // answer is correct
-function answerIsCorrect(){
-    document.getElementById(currentQuestion).style.backgroundColor = "#0f0";
-}
 
-// answer is Wrong
-function answerIsWrong(){
-    document.getElementById(currentQuestion).style.backgroundColor = "#f00";
-}
 
 function TimeIsUp(){
     document.getElementById(currentQuestion).style.backgroundColor = "#f00";
@@ -206,4 +204,4 @@ function scoreRender(){
     
     scoreDiv.innerHTML += "<p>"+ scorePerCent +"% " + finalScore + "</p>";
 }
-console.log(finalScore)
+

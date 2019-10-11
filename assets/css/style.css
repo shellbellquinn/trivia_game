@@ -1,49 +1,46 @@
-body{
+#header{
+    margin: 15px;
+    font-size: 48px;
+    text-align: center;
+    font-weight: bolder;
+}
+#subheader{
+    margin: 30px;
+    padding-top: 30px;
     font-size: 20px;
-    background-image: url("images/bckgd.jpg");
+    text-align: center;
+    font-weight: lighter;
 }
 
 #container{
     margin : 20px auto;
     background-color: white;
-    height: 300px;
-    width : 700px;
+    max-width : 700px;
     border-radius: 5px;
     box-shadow: 0px 5px 15px 0px;
     position: relative;
 }
+
 #start{
     font-size: 1.5em;
-    font-weight: bolder;
-    border : 2px solid green;
+    font-weight: bold;
+    border: 2px solid green;
     text-align: center;
     cursor: pointer;
-    position: absolute;
-    left:300px;
-    top:50px;
-    color : green;
+    color: green;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+ 
 }
 #start:hover{
     border: 3px solid lightgreen;
     color : lightgreen;
 }
 
-#qImg{
-    width : 200px;
-    height : 200px;
-    left : 0px;
-    top : 0px;
-}
-#qImg img{
-    width : 200px;
-    height : 200px;
-    border-top-left-radius: 5px;
-}
-
 #question{
     width:500px;
     margin: 10px;
-    margin-left: 200px;
     right:0;
     top:0;
 }
@@ -59,46 +56,53 @@ body{
     padding : 10px
 }
 .choice{
-    display: inline-block;
+    display: flex;
     width : 30em;
     text-align: center;
     border : 1px solid grey;
     border-radius: 5px;
     cursor: pointer;
     padding : 5px;
+    justify-content: center;
 }
 
-#timer{
-    height : 100px;
-    width : 200px;
-    bottom : 0px;
-    text-align: center;
-}
 #counter{
-    font-size: 0em;
-    padding-top: 50px;
+    font-size: 2em;
+    text-align: center;
+    color: white;
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 100%;
 }
-#btimeBar{
-    width : 200px;
-    height : 10px;
-    border-radius: 10px;
+
+/* #btimeBar{
+
     background-color: lightgray;
-    margin-left : 25px;
+    height: 10px;
+    display: flex;
+    justify-content: center;
 }
 #timeBar{
-    height : 10px;
-    border-radius: 10px;
+    
     background-color: mediumseagreen;
-    margin-top : -10px;
-    margin-left : 25px;
-}
-#progress{
-    width : 500px;
-    bottom : 0px;
-    right : 0px;
-    padding:5px;
-    text-align: right;
-}
+    height: 10px;
+    display: flex;
+    justify-content: center;
+} */
+
+#progress {
+    width: 100%;
+    background-color: grey;
+  }
+  
+  #timeBar {
+    width: 1%;
+    height: 30px;
+    background-color: green;
+  }
 
 #scoreContainer{
     margin : 20px auto;
@@ -107,9 +111,10 @@ body{
     height: 300px;
     width : 700px;
     border-radius: 5px;
-    box-shadow: 0px 5px 15px 0px;
     position: relative;
     display: none;
+    display: flex;
+    justify-content: center;
 }
 
 #scoreContainer p{
