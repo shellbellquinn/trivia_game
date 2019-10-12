@@ -151,7 +151,7 @@ var mobileBarUnit = mobileBarWidth / questionTime;
 var barUnit = barWidth / questionTime;
 var timer;
 var score = 0;
-var scorePerCent= "0";
+var scorePerCent = "0";
 
 
 
@@ -161,7 +161,7 @@ start.addEventListener("click", startQuiz);
 function startQuiz() {
     scoreDiv.textContent = "";
     imgContainer.setAttribute("src", "")
-    scorePerCent= "0";
+    scorePerCent = "0";
     lastQuestion = questions.length - 1;
     currentQuestion = 0;
     count = 0;
@@ -177,7 +177,7 @@ function startQuiz() {
     nextQuestion();
     quiz.style.display = "block";
     renderCounter();
-    timer = setInterval(renderCounter, 1000); 
+    timer = setInterval(renderCounter, 1000);
 }
 
 // next question
@@ -248,24 +248,23 @@ function scoreRender() {
 
     if (scorePerCent >= 80) {
         finalScore = "Congrats! You're Smarter Than a Fifth Grader!";
-       imgSource= "https://media.giphy.com/media/xTiTnwLdTHmELnDx4I/giphy.gif";
+        imgSource = "https://media.giphy.com/media/xTiTnwLdTHmELnDx4I/giphy.gif";
     } else if (scorePerCent >= 60) {
         finalScore = "Cheer Up! There May Be a Couple Fifth Graders You're Smarter Than.";
-        imgSource= "https://i.giphy.com/media/26BkMnfPJE3ltfqWk/giphy.webp";
+        imgSource = "https://i.giphy.com/media/26BkMnfPJE3ltfqWk/giphy.webp";
     } else if (scorePerCent >= 30) {
         finalScore = "Yikes! You're Not Smarter Than a Fifth Grader.";
-        imgSource= "https://media2.giphy.com/media/3oEduYeIpHUgif4J32/giphy.gif?cid=790b7611612a936bc6cedddd20ee26cd5d6dfbfb13c98559&rid=giphy.gif"
+        imgSource = "https://media2.giphy.com/media/3oEduYeIpHUgif4J32/giphy.gif?cid=790b7611612a936bc6cedddd20ee26cd5d6dfbfb13c98559&rid=giphy.gif"
     } else if (scorePerCent >= 0) {
         finalScore = "Uh Oh! A Fifth Grader is Definately Smarter Than You. Maybe It's Time To Go Back to School.";
-        imgSource= "https://media.giphy.com/media/FMiD54OqYdnW0/giphy.gif"
+        imgSource = "https://media.giphy.com/media/FMiD54OqYdnW0/giphy.gif"
     }
 
-    
+
 
     scoreDiv.textContent = scorePerCent + "% " + finalScore;
     imgContainer.setAttribute("src", imgSource)
 
+    var previousScores = localStorage.setItem("finalScore", scorePerCent);
 
-
-
-    }
+}
