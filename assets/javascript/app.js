@@ -202,6 +202,8 @@ function renderCounter() {
     } else {
         count = 0;
         alert(questions[currentQuestion].timesUpResponce);
+        currentQuestion++;
+        nextQuestion()
     }
 }
 
