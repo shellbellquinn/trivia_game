@@ -16,75 +16,74 @@ var questionImg = document.getElementById("questionImg");
 var imgContainer = document.getElementById('imgContainer')
 
 // create vars and questions
-var questions = [
-    {
-        question : "If the Teenage Mutant Ninja Turtles were real turtles, which would be their animal classifiaction?",
+var questions = [{
+        question: "If the Teenage Mutant Ninja Turtles were real turtles, which would be their animal classifiaction?",
         questionImg: "http://pngimg.com/uploads/ninja_turtles/ninja_turtles_PNG55.png",
-        choiceA : "Reptiles",
-        choiceB : "Marsupials",
-        choiceC : "Amphibians",
-        choiceD : "Mammals",
-        correct : "a",
+        choiceA: "Reptiles",
+        choiceB: "Marsupials",
+        choiceC: "Amphibians",
+        choiceD: "Mammals",
+        correct: "a",
         correctResponce: "Great job! You know your reptiles!",
         incorrectResponce: "Nope! Turtles, snakes, lizards, tortoises, crocodiles, and alligators are all reptiles!",
         timesUpResponce: "Time's Up! The correct answer was reptile!",
-    },{
-        question : "It takes Nick 75 minutes to do his homework. If he begins at 7pm, how much time will he have to practice his dance moves before bed at 10pm?",
+    }, {
+        question: "It takes Nick 75 minutes to do his homework. If he begins at 7pm, how much time will he have to practice his dance moves before bed at 10pm?",
         questionImg: "https://cdn.dribbble.com/users/185578/screenshots/4752552/backpack-kid.gif",
-        choiceA : "1 hour and 20 minutes",
-        choiceB : "1 hour and 15 minutes",
-        choiceC : "1 hour and 45 minutes",
-        choiceD : "1 hour and 35 minutes",
-        correct : "c",
+        choiceA: "1 hour and 20 minutes",
+        choiceB: "1 hour and 15 minutes",
+        choiceC: "1 hour and 45 minutes",
+        choiceD: "1 hour and 35 minutes",
+        correct: "c",
         correctResponce: "Nice! Practice those dance moves!",
         incorrectResponce: "Wrong! He would have 1 hour and 45 minutes to practice.",
         timesUpResponce: "Uh oh! Time's up the correct answer was 1 hour and 45 minutes!",
     },
     {
-        question : "'My very empty mouth swallowed up nachos?' is a mnemonic device that helps us remember the name of which of these things?",
+        question: "'My very empty mouth swallowed up nachos?' is a mnemonic device that helps us remember the name of which of these things?",
         questionImg: "http://pluspng.com/img-png/free-png-nachos-and-cheese-cheese-tray-cliparts-2577009-800.png",
-        choiceA : "Moon Phases",
-        choiceB : "Stars in Orion",
-        choiceC : "Planets in Our Solar System",
-        choiceD : "Order of Operations",
-        correct : "c",
+        choiceA: "Moon Phases",
+        choiceB: "Stars in Orion",
+        choiceC: "Planets in Our Solar System",
+        choiceD: "Order of Operations",
+        correct: "c",
         correctResponce: "Correct!",
         incorrectResponce: "Incorrect! It's the planets in our solar system!",
         timesUpResponce: "Time's Up! The correct answer is planets in our solar system!",
     },
     {
-        question : "If a peach pit is one-sixth the weight of a peach and you have 24 pounds of peaches, how many pounds are the pits?",
+        question: "If a peach pit is one-sixth the weight of a peach and you have 24 pounds of peaches, how many pounds are the pits?",
         questionImg: "https://cdn.prod-carehubs.net/n1/d4fe2aba09187cb4/uploads/2019/06/peach-joke.jpg",
-        choiceA : "6 pounds",
-        choiceB : "4 pounds",
-        choiceC : "8 pounds",
-        choiceD : "2 pounds",
-        correct : "b",
+        choiceA: "6 pounds",
+        choiceB: "4 pounds",
+        choiceC: "8 pounds",
+        choiceD: "2 pounds",
+        correct: "b",
         correctResponce: "Yay! That's right, enjoy your peaches.",
         incorrectResponce: "Nope! One-sixth of 24 is 4.",
         timesUpResponce: "Time's Up! The answer is 4."
     },
     {
-        question : "Australia is the world's 6th largest country by area! In what hemisphere is Australia located?                     ",
+        question: "Australia is the world's 6th largest country by area! In what hemisphere is Australia located?                     ",
         questionImg: "http://bestanimations.com/Flags/Australia/australian-flag-animated-gif-36.gif",
-        choiceA : "Northern",
-        choiceB : "Southern",
-        choiceC : "Both",
-        choiceD : "Neither",
-        correct : "b",
+        choiceA: "Northern",
+        choiceB: "Southern",
+        choiceC: "Both",
+        choiceD: "Neither",
+        correct: "b",
         correctResponce: "That's right, cheers mate!",
         incorrectResponce: "Nope! The land down under is in the Southern hemisphere.",
         timesUpResponce: "Time's Up! The right answer is Southern.",
 
     },
     {
-        question : "By definition an ornithologist is a scientist who studies what?",
+        question: "By definition an ornithologist is a scientist who studies what?",
         questionImg: "https://pngriver.com/wp-content/uploads/2018/03/Download-Science-PNG-Transparent-Picture-For-Designing-Work.png",
-        choiceA : "Birds",
-        choiceB : "Ears",
-        choiceC : "Hornets",
-        choiceD : "Plants",
-        correct : "a",
+        choiceA: "Plants",
+        choiceB: "Ears",
+        choiceC: "Hornets",
+        choiceD: "Birds",
+        correct: "d",
         correctResponce: "Yes! Let's go birdwatching!",
         incorrectResponce: "Nope! Ornithologists study birds!",
         timesUpResponce: "Time's Up! Ornithologists study birds!"
@@ -94,138 +93,128 @@ var questions = [
 var lastQuestion = questions.length - 1;
 var currentQuestion = 0;
 var count = 0;
-var questionTime = 30; 
-var barWidth = 700; 
+var questionTime = 30;
+var barWidth = 700;
 var barUnit = barWidth / questionTime;
 var timer;
 var score = 0;
+var scorePerCent= "0";
 
 
 
-start.addEventListener("click",startQuiz);
+start.addEventListener("click", startQuiz);
 
 // start quiz
-function startQuiz(){
-    currentQuestion = 0
+function startQuiz() {
+    scoreDiv.textContent = "";
+    imgContainer.setAttribute("src", "")
+    scorePerCent= "0";
+    lastQuestion = questions.length - 1;
+    currentQuestion = 0;
+    count = 0;
+    questionTime = 30;
+    barWidth = 700;
+    barUnit = barWidth / questionTime;
+    timer;
+    score = 0;
+    currentQuestion = 0;
+    score = 0;
     scoreDiv.setAttribute('style', 'display:none');
     imgContainer.setAttribute('style', 'display:none');
     start.style.display = "none";
     subheader.style.display = "none";
-    img1.style.display ="none";
+    img1.style.display = "none";
     nextQuestion();
     quiz.style.display = "block";
     renderCounter();
-    timer = setInterval(renderCounter,1000); // 1000ms = 1s
+    timer = setInterval(renderCounter, 1000); 
 }
 
 // next question
-function nextQuestion(){
-    
+function nextQuestion() {
+
     var q = questions[currentQuestion];
-    question.innerHTML = "<p>"+ q.question +"</p>";
+    question.innerHTML = "<p>" + q.question + "</p>";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
     choiceD.innerHTML = q.choiceD;
-    questionImg.setAttribute ("src", q.questionImg);
+    questionImg.setAttribute("src", q.questionImg);
 }
 
 
-function renderCounter(){
-    if(count <= questionTime){
+function renderCounter() {
+    if (count <= questionTime) {
         timeBar.style.width = count * barUnit + "px";
         counter.innerHTML = count;
         count++
-    }else{
+    } else {
         count = 0;
-        // change progress color to red
         alert(questions[currentQuestion].timesUpResponce);
     }
 }
-
- function renderNextQuestion(){
-        if(currentQuestion < lastQuestion){
-            currentQuestion++;
-            nextQuestion();
-        }else{
-            // end the quiz and show the score
-            clearInterval(timer);
-            scoreRender();
-            alert(test);
-            count = 0;
-            alert(questions[currentQuestion].timesUpResponce);
-        }
-    }
-
 
 
 
 // checkAnwer
 
-function checkAnswer(answer){
-    if( answer == questions[currentQuestion].correct){
+function checkAnswer(answer) {
+    if (answer == questions[currentQuestion].correct) {
         // answer is correct
         score++;
         alert(questions[currentQuestion].correctResponce);
-    }else if ( answer != questions[currentQuestion].correct){
+    } else if (answer != questions[currentQuestion].correct) {
         // answer is wrong 
         alert(questions[currentQuestion].incorrectResponce);
-        }
+    }
     count = 0;
-    if(currentQuestion < lastQuestion){
+    if (currentQuestion < lastQuestion) {
         currentQuestion++;
         nextQuestion();
-    }else{
+    } else {
         // end the quiz and show the score
         clearInterval(timer);
         scoreRender();
     }
-    
+
 }
 
-// answer is correct
 
-
-function TimeIsUp(){
-    document.getElementById(currentQuestion).style.backgroundColor = "#f00";
-    alert("test");
-}
 
 // score render
-function scoreRender(){
+function scoreRender() {
     scoreDiv.style.display = "block";
     quiz.style.display = "none";
     start.style.display = "block";
-    
+    imgContainer.setAttribute("style", "block");
+
     // calculate the amount of question percent answered by the user
-    var scorePerCent = Math.round(100 * score/questions.length);
-    
-    // choose the image based on the scorePerCent
+    scorePerCent = Math.round(100 * score / questions.length);
+
+
     var finalScore = ""
-    var picture = ""
+    var imgSource = ""
 
-    if(scorePerCent >= 80) {
-        finalScore="Congrats! You're Smarter Than a Fifth Grader!";
-        picture= "https://media.giphy.com/media/xTiTnwLdTHmELnDx4I/giphy.gif";
+    if (scorePerCent >= 80) {
+        finalScore = "Congrats! You're Smarter Than a Fifth Grader!";
+       imgSource= "https://media.giphy.com/media/xTiTnwLdTHmELnDx4I/giphy.gif";
+    } else if (scorePerCent >= 60) {
+        finalScore = "Cheer Up! There May Be a Couple Fifth Graders You're Smarter Than.";
+        imgSource= "https://i.giphy.com/media/26BkMnfPJE3ltfqWk/giphy.webp";
+    } else if (scorePerCent >= 30) {
+        finalScore = "Yikes! You're Not Smarter Than a Fifth Grader.";
+        imgSource= "https://media2.giphy.com/media/3oEduYeIpHUgif4J32/giphy.gif?cid=790b7611612a936bc6cedddd20ee26cd5d6dfbfb13c98559&rid=giphy.gif"
+    } else if (scorePerCent >= 0) {
+        finalScore = "Uh Oh! A Fifth Grader is Definately Smarter Than You. Maybe It's Time To Go Back to School.";
+        imgSource= "https://media.giphy.com/media/FMiD54OqYdnW0/giphy.gif"
     }
-    else if(scorePerCent >= 60) {
-        finalScore="Cheer Up! There May Be a Couple Fifth Graders You're Smarter Than.";
-        picture= "https://i.giphy.com/media/26BkMnfPJE3ltfqWk/giphy.webp";
-    }
-    else if(scorePerCent >= 40) {
-        finalScore="Yikes! You're Not Smarter Than a Fifth Grader.";
-        picture= "https://media2.giphy.com/media/3oEduYeIpHUgif4J32/giphy.gif?cid=790b7611612a936bc6cedddd20ee26cd5d6dfbfb13c98559&rid=giphy.gif";
-    }
-    else if(scorePerCent >= 0)
-        finalScore="Uh Oh! A Fifth Grader is Definately Smarter Than You. Maybe It's Time To Go Back to School.";
-        picture= "https://media2.giphy.com/media/FMiD54OqYdnW0/giphy.gif?cid=790b76114e27e6b98d2dbd70eff3de1ef641866b50dc8334&rid=giphy.gif";
+    // }
     
 
-    imgContainer.setAttribute ("src", picture);
-    scoreDiv.innerHTML += "<p>"+ scorePerCent +"% " + finalScore + "</p>";
-
-}
-
-    
+    scoreDiv.textContent = scorePerCent + "% " + finalScore;
+    imgContainer.setAttribute("src", imgSource)
 
 
+
+
+    }
