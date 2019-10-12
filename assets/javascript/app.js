@@ -10,6 +10,8 @@ var choiceD = document.getElementById("d");
 var counter = document.getElementById("counter");
 var timeBar = document.getElementById("timeBar");
 var progress = document.getElementById("progress");
+var mobileTimeBar = document.getElementById("mobileTimeBar");
+var mobileProgress = document.getElementById("mobileProgress");
 var scoreDiv = document.getElementById("scoreContainer");
 var img1 = document.getElementById("img1");
 var questionImg = document.getElementById("questionImg");
@@ -144,6 +146,9 @@ var count = 0;
 var questionTime = 15;
 var barWidth = 700;
 var barUnit = barWidth / questionTime;
+var mobileBarWidth = 350;
+var mobileBarUnit = mobileBarWidth / questionTime;
+var barUnit = barWidth / questionTime;
 var timer;
 var score = 0;
 var scorePerCent= "0";
@@ -160,8 +165,6 @@ function startQuiz() {
     lastQuestion = questions.length - 1;
     currentQuestion = 0;
     count = 0;
-    barWidth = 700;
-    barUnit = barWidth / questionTime;
     timer;
     score = 0;
     currentQuestion = 0;
@@ -193,6 +196,7 @@ function nextQuestion() {
 function renderCounter() {
     if (count <= questionTime) {
         timeBar.style.width = count * barUnit + "px"; //progess bar grow
+        mobileTimeBar.style.width = count * mobileBarUnit + "px"; //progess bar grow
         counter.innerHTML = count;
         count++
     } else {

@@ -132,8 +132,10 @@ body {
     width: 0%;
     height: 30px;
     background-color: green;
-
 }
+
+
+
 
 #scoreContainer {
     margin: 0 auto;
@@ -177,5 +179,34 @@ body {
     #imgContainer {
         width: 100%;
         margin: 0;
+    }
+
+    #progress {
+        display: none;
+    }
+    
+    #timeBar {
+        display: none;
+    }
+
+    #mobileProgress {
+        width: 350px;
+        background-color: rgb(112, 62, 29);
+        height: 30px;
+        margin: 0 auto;
+        margin-top: 30px;
+    }
+    
+    #mobileTimeBar {
+        width: 350px;
+        background-color: green;
+        height: 30px;
+        position: relative;
+        margin-top: 30px;
+    }
+
+    #counter {
+        padding-top: 30px;
+        z-index: 1;
     }
 }
