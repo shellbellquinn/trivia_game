@@ -1,5 +1,5 @@
 body {
-    background-image: url("https://www.middleburgsteakhouse.com/wp-content/uploads/chalkboard-background-1024x683.jpg");
+    background-image: url("https://preventionlane.org/wp-content/uploads/2015/02/blackboard.jpg");
     font-family: 'Lato', sans-serif;
     color: white;
 }
@@ -15,7 +15,7 @@ body {
 }
 
 #subheader {
-    margin: 30px;
+    margin: 10px;
     font-size: 1.4em;
     text-align: center;
     font-weight: lighter;
@@ -55,6 +55,7 @@ body {
     justify-content: center;
     margin-bottom: 5px;
     font-family: 'Gochi Hand', cursive;
+    margin-bottom: 15px;
 }
 
 #start:hover {
