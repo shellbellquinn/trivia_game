@@ -141,7 +141,7 @@ var questions = [{
 var lastQuestion = questions.length - 1;
 var currentQuestion = 0;
 var count = 0;
-var questionTime = 30;
+var questionTime = 15;
 var barWidth = 700;
 var barUnit = barWidth / questionTime;
 var timer;
@@ -160,7 +160,6 @@ function startQuiz() {
     lastQuestion = questions.length - 1;
     currentQuestion = 0;
     count = 0;
-    questionTime = 30;
     barWidth = 700;
     barUnit = barWidth / questionTime;
     timer;
@@ -193,7 +192,7 @@ function nextQuestion() {
 
 function renderCounter() {
     if (count <= questionTime) {
-        timeBar.style.width = count * barUnit + "px";
+        timeBar.style.width = count * barUnit + "px"; //progess bar grow
         counter.innerHTML = count;
         count++
     } else {
@@ -256,7 +255,7 @@ function scoreRender() {
         finalScore = "Uh Oh! A Fifth Grader is Definately Smarter Than You. Maybe It's Time To Go Back to School.";
         imgSource= "https://media.giphy.com/media/FMiD54OqYdnW0/giphy.gif"
     }
-    // }
+
     
 
     scoreDiv.textContent = scorePerCent + "% " + finalScore;

@@ -6,7 +6,7 @@ body {
 
 #header {
     margin: 30px;
-    font-size: 3em;
+    font-size: 3.5em;
     text-align: center;
     font-weight: bold;
     color: white;
@@ -16,7 +16,7 @@ body {
 
 #subheader {
     margin: 30px;
-    font-size: 1.5em;
+    font-size: 1.4em;
     text-align: center;
     font-weight: lighter;
     font-family: 'Lato', sans-serif;
