@@ -40,6 +40,18 @@ var questions = [{
         timesUpResponce: "Uh oh! Time's up the correct answer was 1 hour and 45 minutes!",
     },
     {
+        question: "Which word contains a long vowel sound in the following sentence? “Dogs like tennis balls.",
+        questionImg: "https://i.giphy.com/media/xagTEogeO9qes/giphy.webp",
+        choiceA: "Dogs",
+        choiceB: "Like",
+        choiceC: "Tennis",
+        choiceD: "Balls",
+        correct: "b",
+        correctResponce: "Nice job! Nice has a long 'i' too!",
+        incorrectResponce: "Nope! A long vowel is pronounced exactly the same as the letter itself. In this case, the long vowel is the “i” in like.",
+        timesUpResponce: "Time's Up! A long vowel is pronounced exactly the same as the letter itself. In this case, the long vowel is the “i” in like."
+    },
+    {
         question: "'My very empty mouth swallowed up nachos?' is a mnemonic device that helps us remember the name of which of these things?",
         questionImg: "http://pluspng.com/img-png/free-png-nachos-and-cheese-cheese-tray-cliparts-2577009-800.png",
         choiceA: "Moon Phases",
@@ -47,21 +59,9 @@ var questions = [{
         choiceC: "Planets in Our Solar System",
         choiceD: "Order of Operations",
         correct: "c",
-        correctResponce: "Correct!",
+        correctResponce: "Correct! Sorry Pluto, no nachos for you.",
         incorrectResponce: "Incorrect! It's the planets in our solar system!",
         timesUpResponce: "Time's Up! The correct answer is planets in our solar system!",
-    },
-    {
-        question: "If a peach pit is one-sixth the weight of a peach and you have 24 pounds of peaches, how many pounds are the pits?",
-        questionImg: "https://cdn.prod-carehubs.net/n1/d4fe2aba09187cb4/uploads/2019/06/peach-joke.jpg",
-        choiceA: "6 pounds",
-        choiceB: "4 pounds",
-        choiceC: "8 pounds",
-        choiceD: "2 pounds",
-        correct: "b",
-        correctResponce: "Yay! That's right, enjoy your peaches.",
-        incorrectResponce: "Nope! One-sixth of 24 is 4.",
-        timesUpResponce: "Time's Up! The answer is 4."
     },
     {
         question: "Australia is the world's 6th largest country by area! In what hemisphere is Australia located?                     ",
@@ -77,16 +77,64 @@ var questions = [{
 
     },
     {
+        question: "What typically green chemical found in plants uses photosynthesis to turn sunlight into energy?",
+        questionImg: "https://media0.giphy.com/media/o7R0zQ62m8Nk4/giphy.gif?cid=790b761169393137045bd757afcc81a374ad242c39288900&rid=giphy.gif",
+        choiceA: "Iodine",
+        choiceB: "Chloroform",
+        choiceC: "Chlorophyll",
+        choiceD: "Ethylamine",
+        correct: "c",
+        correctResponce: "Nice job paying attention in science!",
+        incorrectResponce: "Nope! It's Chlorophyll.",
+        timesUpResponce: "Time's Up! It's Chlorophyll."
+    },
+    {
+        question: "If a peach pit is one-sixth the weight of a peach and you have 24 pounds of peaches, how many pounds are the pits?",
+        questionImg: "https://cdn.prod-carehubs.net/n1/d4fe2aba09187cb4/uploads/2019/06/peach-joke.jpg",
+        choiceA: "6 pounds",
+        choiceB: "4 pounds",
+        choiceC: "8 pounds",
+        choiceD: "2 pounds",
+        correct: "b",
+        correctResponce: "Yay! That's right, enjoy your peaches.",
+        incorrectResponce: "Nope! One-sixth of 24 is 4.",
+        timesUpResponce: "Time's Up! The answer is 4."
+    },
+    {
+        question: "Between 1488 and 1485 The Wars of The Roses took place in what country?",
+        questionImg: "https://media0.giphy.com/media/26Ff1jwWkIz5VygBG/giphy.gif?cid=790b761193a937a935da6abcb04b7c330adbd0aea7d0f0ba&rid=giphy.gif",
+        choiceA: "England",
+        choiceB: "France",
+        choiceC: "Germany",
+        choiceD: "Spain",
+        correct: "a",
+        correctResponce: "Congrats! This led to the Tudor house taking the throne of England.",
+        incorrectResponce: "Nope! The Wars of the Roses were a series of English civil wars for control of the throne.",
+        timesUpResponce: "Time's Up! The Wars of the Roses were a series of English civil wars for control of the throne."
+    },
+    {
         question: "By definition an ornithologist is a scientist who studies what?",
         questionImg: "https://pngriver.com/wp-content/uploads/2018/03/Download-Science-PNG-Transparent-Picture-For-Designing-Work.png",
         choiceA: "Plants",
         choiceB: "Ears",
-        choiceC: "Hornets",
+        choiceC: "Fossils",
         choiceD: "Birds",
         correct: "d",
         correctResponce: "Yes! Let's go birdwatching!",
         incorrectResponce: "Nope! Ornithologists study birds!",
         timesUpResponce: "Time's Up! Ornithologists study birds!"
+    },
+    {
+        question: "The classic Hans Christian Andersen Fairy Tale 'The Real Princess' is better known as 'The Princess and the...'",
+        questionImg: "https://i.giphy.com/media/2Gf1SyVRuDzWw/giphy.webp",
+        choiceA: "Bride",
+        choiceB: "Frog",
+        choiceC: "Prince",
+        choiceD: "Pea",
+        correct: "d",
+        correctResponce: "Yes! It's the Princess and the Pea.",
+        incorrectResponce: "Nope! It's the Princess and the Pea.",
+        timesUpResponce: "Time's Up! It's the Princess and the Pea."
     },
 ];
 
