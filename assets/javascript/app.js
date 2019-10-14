@@ -15,7 +15,9 @@ var mobileProgress = document.getElementById("mobileProgress");
 var scoreDiv = document.getElementById("scoreContainer");
 var img1 = document.getElementById("img1");
 var questionImg = document.getElementById("questionImg");
-var imgContainer = document.getElementById('imgContainer')
+var imgContainer = document.getElementById('imgContainer');
+var previousScores = localStorage.getItem(score);
+var highScore = document.getElementById('highScore');
 
 // create vars and questions
 var questions = [{
@@ -153,8 +155,6 @@ var timer;
 var score = 0;
 var scorePerCent = "0";
 
-
-
 start.addEventListener("click", startQuiz);
 
 // start quiz
@@ -264,9 +264,14 @@ function scoreRender() {
 
 
 
+
+
     scoreDiv.textContent = scorePerCent + "% " + finalScore;
     imgContainer.setAttribute("src", imgSource)
 
-    var previousScores = localStorage.setItem("finalScore", scorePerCent);
+    localStorage.setItem("score", scorePerCent);
 
+    if (score < scorePerCent){
+        highScore.innerHTML = "You have a new personal high score, try again to beat it!";
+    }
 }

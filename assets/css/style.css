@@ -1,4 +1,4 @@
-body {
+#body {
     background-image: url("https://preventionlane.org/wp-content/uploads/2015/02/blackboard.jpg");
     font-family: 'Lato', sans-serif;
     color: white;
@@ -184,7 +184,7 @@ body {
     #progress {
         display: none;
     }
-    
+
     #timeBar {
         display: none;
     }
@@ -196,7 +196,7 @@ body {
         margin: 0 auto;
         margin-top: 30px;
     }
-    
+
     #mobileTimeBar {
         width: 350px;
         background-color: green;
